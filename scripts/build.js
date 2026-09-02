@@ -126,6 +126,24 @@ async function buildPortfolio() {
   await writeJson(path.join(DIST_DATA, "portfolio-index.json"), index);
 }
 
+async function buildAbout() {
+  const about = await readYaml(path.join(CONTENT, "about.yml"));
+  const { thumb, full } = await processPhoto(
+    path.join(PHOTOS, "about", about.portrait),
+    path.join(DIST_IMAGES, "about"),
+    about.portrait
+  );
+
+  await writeJson(path.join(DIST_DATA, "about.json"), {
+    bio: about.bio,
+    email: about.email,
+    phone: about.phone,
+    socials: about.socials || [],
+    portrait: full,
+    portraitThumb: thumb,
+  });
+}
+
 async function copyStaticSite() {
   for (const file of ["index.html", "diary.html", "portfolio.html", "about.html"]) {
     await fs.copyFile(path.join(ROOT, file), path.join(DIST, file));
@@ -142,6 +160,7 @@ async function build() {
   await buildFavorites();
   await buildDiary();
   await buildPortfolio();
+  await buildAbout();
 
   console.log(`Build complete -> ${DIST}`);
 }

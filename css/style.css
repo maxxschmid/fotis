@@ -294,7 +294,26 @@ button {
 
 .about-content {
   padding: calc(var(--nav-height) + var(--gap)) var(--gap) var(--gap);
-  max-width: 40rem;
+  max-width: 30rem;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.about-portrait {
+  width: 100%;
+  max-width: 20rem;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+
+.about-bio {
+  margin-bottom: 1.5rem;
+}
+
+.about-contact,
+.about-socials {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  letter-spacing: 0.02em;
 }
