@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "reorder": "node scripts/reorder.js"
   },
   "devDependencies": {
     "js-yaml": "^5.4.1",
